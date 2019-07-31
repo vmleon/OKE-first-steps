@@ -2,7 +2,11 @@
 
 ## Virtual Machines
 
-XXX
+It is a virtualization of a computer system.
+
+Through software it simulate the underlying hardward. This software is called hyper-visor.
+
+On top of that virtual system you install a complete operative system.
 
 ## Containers
 
@@ -53,7 +57,6 @@ Run locally a container from your image:
 
 Tag an image:
 `docker tag ...` XXX
-
 
 ## Oracle registry
 
