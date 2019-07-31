@@ -12,6 +12,15 @@ XXX
 
 XXX
 
+Build your image:
+
+`docker build -t oke-first-steps/web .`
+
+Run locally a container from your image:
+
+`docker run -p 4000:4000 -d oke-first-steps/web`
+
+
 ## Oracle registry
 
 XXX
