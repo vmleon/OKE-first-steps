@@ -35,9 +35,11 @@ Because is a lightweight virtualization technology, spinning new containers from
 
 Docker is the most popular container technology. Docker is just a toolkit that abstract the complexity of `cgroups` and `namespaces`.
 
+Docker images are composed by layers of modifications on top of based images.
+
 ### Dockerfile
 
-XXX
+Dockerfile contains the instructions to build a docker image.
 
 ### Working with Docker
 
