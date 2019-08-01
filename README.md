@@ -1,5 +1,21 @@
 # OKE first steps
 
+First steps with Docker, Kubernetes and Oracle Kubernetes Engine (OKE).
+
+We are going to build, dockerize and deploy an application with this architecture.
+
+![Architecture](images/use-case.jpg)
+
+What does it cover?
+
+- Create a Kubernetes cluster with Oracle Cloud.
+- Explain virtual machines, containers, Docker, registry, and Kubernetes.
+- Run our application locally.
+- Configure kubectl to talk to my cluster.
+- Deploy our application in OKE
+
+---
+
 ## Virtual Machines
 
 It is a **virtualization** of a computer system.
@@ -18,8 +34,8 @@ It has a **fast start time**.
 
 The unterlying technology: `cgroups` and `namespaces` of Linux kernel.
 
-- `cgroups` is "what you can use" from your host machine.
-- `namespaces` is "what you can see" from your host machine.
+- `cgroups` is "what you can use" from your host machine. Memory, CPU, block I/O, network, ...
+- `namespaces` is "what you can see" from your host machine. Pid, net, mnt, uts, ipc, ...
 
 ### Why containers is useful
 
@@ -41,15 +57,21 @@ Docker is the most popular container technology. Docker is just a toolkit that a
 
 Docker images are composed by layers of modifications on top of based images.
 
-### Dockerfile
+## Kubernetes
+
+Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
+
+---
+
+## Dockerize your application
 
 Dockerfile contains the instructions to build a docker image.
-
-### Working with Docker
 
 Build your image:
 
 `docker build -t oke-first-steps/web .`
+
+## Run your application locally
 
 Run locally a container from your image:
 
@@ -58,17 +80,13 @@ Run locally a container from your image:
 Tag an image:
 `docker tag ...` XXX
 
-## Oracle registry
+## Push images to registry
 
 Repository of Docker images, tagged with a version or code name.
 
 Developers or CI tools can **push** images to the repository.
 
 Kubernetes and developers can **pull** images to be run.
-
-## Kubernetes
-
-Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
 
 ## Oracle Kubernetes Engine
 
