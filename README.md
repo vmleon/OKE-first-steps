@@ -78,6 +78,7 @@ Docker images are composed by layers of modifications on top of based images.
 
 Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
 
+**TODO** Explain: deployments, pods, services, etc
 
 ---
 
@@ -161,6 +162,8 @@ Login with your Docker into OCI registry:
 
 `docker login -u <tenancy-name>/<email> fra.ocir.io`
 
+When you create a Auth Token in `Identity > Users > <your-user> > Auth Token`, the passcode generated is the password prompted here.
+
 > If your user is federated with Oracle Identity Cloud Service, use the following pattern for your username:
 > 
 > \<tenancy-name\>/oracleidentitycloudservice/\<email\>
@@ -185,16 +188,29 @@ Check images with `docker images | grep oke`
 
 - `docker push fra.ocir.io/<tenancy_name>/oke/web`
 
+> Make images public!
 
 
 ## Oracle Kubernetes Engine
 
-XXX
+**TODO** Configure kubectl.
+
+`kubectl apply -f ops/web.yml`
+
+`kubectl describe deployment web-deployment`
+
+`kubectl proxy`
+
+[Kubernetes Dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+
+`kubectl delete deployment web-deployment`
+
+`kubectl delete service web`
 
 ## Deploy your containers
 
-XXX
+**TODO**
 
 ## Upgrade your application
 
-XXX
+**TODO**

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  labels:
+    app: node-redis
+spec:
+  containers:
+  - name: server
+    image: server:latest
+    ports:
+    - containerPort: 8080
+    # data volume from where server read data those are written by redis
+    volumeMounts:
+    - name: data
+      mountPath: /data
+      readOnly: false
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: redis-data
