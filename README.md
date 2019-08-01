@@ -6,21 +6,27 @@ We are going to build, dockerize and deploy an application with this architectur
 
 ![Architecture](images/use-case.jpg)
 
-What does it cover?
+What do we cover?
 
 - Create a Kubernetes cluster with Oracle Cloud.
 - Explain virtual machines, containers, Docker, registry, and Kubernetes.
 - Run our application locally.
-- Configure kubectl to talk to my cluster.
+- Configure `kubectl` to talk to my cluster.
 - Deploy our application in OKE
+
 
 ---
 
-## Virtual Machines
+
+## Virtual Machines
 
 It is a **virtualization** of a computer system.
 
-Through software it **simulate the underlying hardward**. This software is called **hyper-visor**.
+Through software, it **simulates the underlying hardward**. The software is called **hyper-visor**. Examples: VirtualBox, QEMU, Hyper-V, VMWare, etc.
+
+There are two types but they work in a similar way:
+
+![Hypervisor](images/hypervisors.png)
 
 On top of that virtual system you **install a complete operative system**.
 
@@ -38,6 +44,11 @@ The unterlying technology: `cgroups` and `namespaces` of Linux kernel.
 - `namespaces` is "what you can see" from your host machine. Pid, net, mnt, uts, ipc, ...
 
 ### Why containers is useful
+
+Compare virtual machines and containers stack:
+![Virtual Machines](images/virtual-machines.png)
+
+![Containers](images/containers.png)
 
 It **streamline the pipeline** of development, testing and deployment of applications.
 
@@ -61,7 +72,9 @@ Docker images are composed by layers of modifications on top of based images.
 
 Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
 
+
 ---
+
 
 ## Dockerize your application
 
