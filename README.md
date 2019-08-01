@@ -84,20 +84,47 @@ Kubernetes is an **open-source** system for **automating deployment**, **scaling
 
 ## Dockerize your application
 
-Dockerfile contains the instructions to build a docker image.
+Dockerize your application means to wrap your application, libraries and configuration in a docker image that can be run later.
 
-Build your image:
+You can attache some configuration to your image but you still can modify that configuration with environment variables at run time.
+
+You define the container image  with a Dockerfile. Dockerfile contains the instructions to build a docker image.
+
+Build your image for the web:
+
+`cd src/web`
 
 `docker build -t oke-first-steps/web .`
 
+Build your image for the server:
+
+`cd src/server`
+
+`docker build -t oke/server .`
+
+Check that the images are created with:
+
+`docker images | grep oke`
+
+Can you see the size of the images? It is smaller than a full virtual machine image. That is really good news!
+
 ## Run your application locally
 
-Run locally a container from your image:
+Run locally a container from your images:
 
-`docker run -p 4000:4000 -d oke-first-steps/web`
+`docker run -d --name server -p 3000:3000 --rm oke/server`
 
-Tag an image:
-`docker tag ...` XXX
+`docker run -d --name web -p 80:80 --rm oke/web`
+
+Test the applications:
+
+Server health 
+
+`curl -s localhost:3000/health | jq .`
+
+Web running on:
+[localhost](http://localhost)
+
 
 ## Push images to registry
 
@@ -106,6 +133,59 @@ Repository of Docker images, tagged with a version or code name.
 Developers or CI tools can **push** images to the repository.
 
 Kubernetes and developers can **pull** images to be run.
+
+> Try it yourself!
+> 
+> Pull an image:
+> `docker pull docker/whalesay`
+> 
+> Run the image:
+> 
+> `docker run --name whale --rm docker/whalesay cowsay "Say no to one-use plastic, hooman"`
+
+
+List of regional names and codes for OCI registry:
+
+|  Region   | Code  | Registry URL |
+| :-------: | :---: | :----------: |
+| Frankfurt |  fra  | fra.ocir.io  |
+|  London   |  lhr  | lhr.ocir.io  |
+|  Ashburn  |  iad  | iad.ocir.io  |
+|  Phoenix  |  phx  | phx.ocir.io  |
+
+_Full list of regions and codes [here](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab)!_
+
+Login with your Docker into OCI registry:
+
+> You must have an Auth Token to use with Oracle Cloud Infrastructure Registry
+
+`docker login -u <tenancy-name>/<email> fra.ocir.io`
+
+> If your user is federated with Oracle Identity Cloud Service, use the following pattern for your username:
+> 
+> \<tenancy-name\>/oracleidentitycloudservice/\<email\>
+
+Tag an image for OCI registry:
+
+`docker tag docker/whalesay fra.ocir.io/<tenancy_name>/oke/whalesay:latest`
+
+Push the tagged image to OCI registry:
+
+`docker push fra.ocir.io/<tenancy_name>/oke/whalesay`
+
+Let's try to tag and push our web and server:
+
+- `docker tag oke/server fra.ocir.io/<tenancy_name>/oke/server:beta`
+
+- `docker tag oke/web fra.ocir.io/<tenancy_name>/oke/web:beta`
+
+Check images with `docker images | grep oke`
+
+- `docker push fra.ocir.io/<tenancy_name>/oke/server`
+
+- `docker push fra.ocir.io/<tenancy_name>/oke/web`
+
+
 
 ## Oracle Kubernetes Engine
 
