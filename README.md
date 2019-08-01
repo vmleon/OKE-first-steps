@@ -1,4 +1,4 @@
-# OKE first steps
+# Oracle Kubernetes Engine first steps
 
 First steps with Docker, Kubernetes and Oracle Kubernetes Engine (OKE).
 
@@ -10,9 +10,10 @@ What do we cover?
 
 - Create a Kubernetes cluster with Oracle Cloud.
 - Explain virtual machines, containers, Docker, registry, and Kubernetes.
-- Run our application locally.
-- Configure `kubectl` to talk to my cluster.
-- Deploy our application in OKE
+- Dockerize your application
+- Run your application locally.
+- Configure `kubectl` to talk to your cluster.
+- Deploy your application in OKE
 
 
 ---
@@ -22,7 +23,9 @@ What do we cover?
 
 It is a **virtualization** of a computer system.
 
-Through software, it **simulates the underlying hardward**. The software is called **hyper-visor**. Examples: VirtualBox, QEMU, Hyper-V, VMWare, etc.
+Through software, it **simulates the underlying hardward**. The software is called **hyper-visor**.
+
+Examples: VirtualBox, QEMU, Hyper-V, VMWare, etc.
 
 There are two types but they work in a similar way:
 
@@ -46,8 +49,11 @@ The unterlying technology: `cgroups` and `namespaces` of Linux kernel.
 ### Why containers is useful
 
 Compare virtual machines and containers stack:
+
+Virtual Machines:
 ![Virtual Machines](images/virtual-machines.png)
 
+Containers 
 ![Containers](images/containers.png)
 
 It **streamline the pipeline** of development, testing and deployment of applications.
