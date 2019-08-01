@@ -2,11 +2,11 @@
 
 ## Virtual Machines
 
-It is a virtualization of a computer system.
+It is a **virtualization** of a computer system.
 
-Through software it simulate the underlying hardward. This software is called hyper-visor.
+Through software it **simulate the underlying hardward**. This software is called **hyper-visor**.
 
-On top of that virtual system you install a complete operative system.
+On top of that virtual system you **install a complete operative system**.
 
 ## Containers
 
@@ -23,17 +23,17 @@ The unterlying technology: `cgroups` and `namespaces` of Linux kernel.
 
 ### Why containers is useful
 
-It streamline the pipeline of development, testing and deployment of applications.
+It **streamline the pipeline** of development, testing and deployment of applications.
 
-Developers can modify the code, run them in containers that isolate the execution from the local developer machine (the end of "it works on my machine").
+Developers can modify the code, run them in containers that isolate the execution from the local developer machine (**the end of "it works on my machine"**).
 
-When developer is ready, it can push the code to the repository what kick off a remote building that create container images and archive them in a repository of images.
+When developer is ready, it can push the code to the repository what kick off a remote building that **create container images** and **archive them in a repository of images**.
 
-After that, Operations can take those images and deployment in testing and production enviroments.
+After that, Operations can **take those images and deployment** in testing and production enviroments.
 
 The whole process is creating deliverables isolated from local hacks to make it work on a specific environment.
 
-Because is a lightweight virtualization technology, spinning new containers from an image is quick and easy. Perfect to scale your application on demand.
+Because is a lightweight virtualization technology, spinning new containers from an image is quick and easy. Perfect to **scale your application on demand**.
 
 ## Docker
 
@@ -68,7 +68,7 @@ Kubernetes and developers can **pull** images to be run.
 
 ## Kubernetes
 
-Kubernetes is an open-source system for automating deployment, scaling and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
+Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
 
 ## Oracle Kubernetes Engine
 
