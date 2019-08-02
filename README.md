@@ -134,9 +134,9 @@ Web running on:
 [localhost](http://localhost)
 
 
-## Push images to registry
+## Pull and push images
 
-Repository of Docker images, tagged with a version or code name.
+Registry is a repository of container images, tagged with a version or code name.
 
 Developers or CI tools can **push** images to the repository.
 
