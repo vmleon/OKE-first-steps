@@ -190,10 +190,13 @@ Check images with `docker images | grep oke`
 
 > Make images public!
 
-
 ## Oracle Kubernetes Engine
 
 **TODO** Configure kubectl.
+
+## Deploy your containers
+
+**TODO**
 
 `kubectl apply -f ops/web.yml`
 
@@ -206,10 +209,6 @@ Check images with `docker images | grep oke`
 `kubectl delete deployment web-deployment`
 
 `kubectl delete service web`
-
-## Deploy your containers
-
-**TODO**
 
 ## Upgrade your application
 
