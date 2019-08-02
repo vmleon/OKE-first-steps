@@ -10,10 +10,10 @@ What do we cover?
 
 - Create a Kubernetes cluster with Oracle Cloud.
 - Explain virtual machines, containers, Docker, registry, and Kubernetes.
-- Dockerize your application
-- Run your application locally.
+- Dockerize your application.
+- Run your application locally with Docker.
 - Configure `kubectl` to talk to your cluster.
-- Deploy your application in OKE
+- Deploy your application in OKE.
 
 
 ---
@@ -25,7 +25,7 @@ It is a **virtualization** of a computer system.
 
 Through software, it **simulates the underlying hardward**. The software is called **hyper-visor**.
 
-Examples: VirtualBox, QEMU, Hyper-V, VMWare, etc.
+Examples: **VirtualBox**, **QEMU**, **Hyper-V**, **VMWare**, etc.
 
 There are two types but they work in a similar way:
 
@@ -46,15 +46,13 @@ The unterlying technology: `cgroups` and `namespaces` of Linux kernel.
 - `cgroups` is "what you can use" from your host machine. Memory, CPU, block I/O, network, ...
 - `namespaces` is "what you can see" from your host machine. Pid, net, mnt, uts, ipc, ...
 
-### Why containers is useful
+### Why containers are useful
 
 Compare virtual machines and containers stack:
 
-Virtual Machines:
-![Virtual Machines](images/virtual-machines.png)
-
-Containers 
-![Containers](images/containers.png)
+|                 Virtual Machines                 |              Containers              |
+| :----------------------------------------------: | :----------------------------------: |
+| ![Virtual Machines](images/virtual-machines.png) | ![Containers](images/containers.png) |
 
 It **streamline the pipeline** of development, testing and deployment of applications.
 
@@ -78,24 +76,33 @@ Docker images are composed by layers of modifications on top of based images.
 
 Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
 
-**TODO** Explain: deployments, pods, services, etc
+### Kubernetes components (some of them)
+
+- **Pod** is the smallest deployable object in Kubernetes. Containers run inside to do just one job. The pod doesn't make sense without all of those containers running.
+- **Deployment** is a declaration of the topology of your application for Pods and other Kubernetes object models.
+- **Service** is an abstract way to expose an application running on a set of Pods as a network service.
+- **Namespaces** are virtual clusters inside of the Kubernetes cluster to separate different products, projects or departments.
+
+![Kubernetes Overview](images/k8s-overview.jpg)
 
 ---
 
 
 ## Dockerize your application
 
-Dockerize your application means to wrap your application, libraries and configuration in a docker image that can be run later.
+Dockerize your application means to **wrap your application, libraries and configuration** in a docker image that can be run later.
 
-You can attache some configuration to your image but you still can modify that configuration with environment variables at run time.
+You can attach some configuration to your image but you still can modify that configuration with **environment variables** at run time.
 
-You define the container image  with a Dockerfile. Dockerfile contains the instructions to build a docker image.
+You define the container image  with a **Dockerfile**. Dockerfile contains the instructions to build a docker image.
+
+## Build your container images
 
 Build your image for the web:
 
 `cd src/web`
 
-`docker build -t oke-first-steps/web .`
+`docker build -t oke/web .`
 
 Build your image for the server:
 
@@ -107,9 +114,9 @@ Check that the images are created with:
 
 `docker images | grep oke`
 
-Can you see the size of the images? It is smaller than a full virtual machine image. That is really good news!
+Can you see the **size** of the images? It is smaller than a full virtual machine image. That is really good news!
 
-## Run your application locally
+## Run your application locally
 
 Run locally a container from your images:
 
@@ -117,7 +124,7 @@ Run locally a container from your images:
 
 `docker run -d --name web -p 80:80 --rm oke/web`
 
-Test the applications:
+## Test the applications
 
 Server health 
 
@@ -145,6 +152,12 @@ Kubernetes and developers can **pull** images to be run.
 > `docker run --name whale --rm docker/whalesay cowsay "Say no to one-use plastic, hooman"`
 
 
+Login with your Docker into OCI registry:
+
+> You must have an Auth Token to use with Oracle Cloud Infrastructure Registry
+
+`docker login -u <tenancy-name>/<email> fra.ocir.io`
+
 List of regional names and codes for OCI registry:
 
 |  Region   | Code  | Registry URL |
@@ -155,12 +168,6 @@ List of regional names and codes for OCI registry:
 |  Phoenix  |  phx  | phx.ocir.io  |
 
 _Full list of regions and codes [here](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab)!_
-
-Login with your Docker into OCI registry:
-
-> You must have an Auth Token to use with Oracle Cloud Infrastructure Registry
-
-`docker login -u <tenancy-name>/<email> fra.ocir.io`
 
 When you create a Auth Token in `Identity > Users > <your-user> > Auth Token`, the passcode generated is the password prompted here.
 
