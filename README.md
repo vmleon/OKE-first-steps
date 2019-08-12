@@ -201,6 +201,20 @@ Check images with `docker images | grep oke`
 
 **TODO** Configure kubectl.
 
+## Pull OCI Registry private images
+
+Kubernetes has to pull images from OCI Registry, and for that has to authenticate against the registry.
+
+We need to create a secret on our Kubernetes Cluster to do so:
+
+`kubectl create secret docker-registry <secret-name> --docker-server=<region-code>.ocir.io --docker-username='<tenancy-namespace>/<oci-username>' --docker-password='<oci-auth-token>' --docker-email='<email-address>'`
+
+- `<secret-name>`: any descriptive name you like
+- `<region-code>.ocir.io`: OCI registry service URL, e.g. lon.ocir.io
+- `<tenancy-namespace>/<oci-username>`: tenancy and username/email
+- `<oci-auth-token>`: under Identity > User > your user, you can create a Auth Token that goes here
+- `<email-address>`: your email
+
 ## Deploy your containers
 
 **TODO**
@@ -216,6 +230,15 @@ Check images with `docker images | grep oke`
 `kubectl delete deployment web-deployment`
 
 `kubectl delete service web`
+
+## Ingress controller
+
+**TODO**
+[Example: Setting Up an Ingress Controller on a Cluster](https://docs.cloud.oracle.com/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm)
+
+## SSL at ingress controller level
+
+**TODO**
 
 ## Upgrade your application
 
