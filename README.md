@@ -202,7 +202,9 @@ Check images with `docker images | grep oke`
 
 ## Oracle Kubernetes Engine
 
-**TODO** Configure kubectl.
+Create Kubernetes Cluster: `Developer Services > Container Cluster (OKE)`
+
+![OKE cluster creation](images/okeclustercreation.png)
 
 ## Pull OCI Registry private images
 
