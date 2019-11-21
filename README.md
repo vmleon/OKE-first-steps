@@ -6,14 +6,15 @@ We are going to build, dockerize and deploy an application with this architectur
 
 ![Architecture](images/use-case.jpg)
 
-What do we cover?
+# What do we cover?
 
 - Create a Kubernetes cluster with Oracle Cloud.
-- Explain virtual machines, containers, Docker, registry, and Kubernetes.
+- Explain virtual machines, containers, Docker, container registry, and Kubernetes.
 - Dockerize your application.
 - Run your application locally with Docker.
 - Configure `kubectl` to talk to your cluster.
 - Deploy your application in OKE.
+- Scale up and down your application
 
 
 ---
@@ -25,7 +26,7 @@ It is a **virtualization** of a computer system.
 
 Through software, it **simulates the underlying hardward**. The software is called **hyper-visor**.
 
-Examples: **VirtualBox**, **QEMU**, **Hyper-V**, **VMWare**, etc.
+Examples: **VirtualBox**, **KVM**, **QEMU**, **Hyper-V**, **VMWare**, etc.
 
 There are two types but they work in a similar way:
 
@@ -41,7 +42,7 @@ It produces **portable images** that you can run in any Linux host machine.
 
 It has a **fast start time**.
 
-The unterlying technology: `cgroups` and `namespaces` of Linux kernel.
+The underlying technology is: `cgroups` and `namespaces` of Linux kernel.
 
 - `cgroups` is "what you can use" from your host machine. Memory, CPU, block I/O, network, ...
 - `namespaces` is "what you can see" from your host machine. Pid, net, mnt, uts, ipc, ...
@@ -54,11 +55,11 @@ Compare virtual machines and containers stack:
 | :----------------------------------------------: | :----------------------------------: |
 | ![Virtual Machines](images/virtual-machines.png) | ![Containers](images/containers.png) |
 
-It **streamline the pipeline** of development, testing and deployment of applications.
+It **streamlines the pipeline** of development, testing and deployment of applications.
 
 Developers can modify the code, run them in containers that isolate the execution from the local developer machine (**the end of "it works on my machine"**).
 
-When developer is ready, it can push the code to the repository what kick off a remote building that **create container images** and **archive them in a repository of images**.
+When a developer is ready, she can push the code to the repository what kick off a remote building that **create container images** and **archive them in a repository of images**.
 
 After that, Operations can **take those images and deployment** in testing and production enviroments.
 
@@ -70,7 +71,7 @@ Because is a lightweight virtualization technology, spinning new containers from
 
 Docker is the most popular container technology. Docker is just a toolkit that abstract the complexity of `cgroups` and `namespaces`.
 
-Docker images are composed by layers of modifications on top of based images.
+Docker images are composed by **layers** of modifications on top of based images.
 
 ## Kubernetes
 
@@ -137,6 +138,8 @@ Web running on:
 ## Pull and push images
 
 Registry is a repository of container images, tagged with a version or code name.
+
+![OKE and OCIR](images/okeandocir.jpg)
 
 Developers or CI tools can **push** images to the repository.
 
