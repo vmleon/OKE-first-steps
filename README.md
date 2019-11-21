@@ -198,13 +198,13 @@ Check images with `docker images | grep oke`
 
 - `docker push fra.ocir.io/<tenancy_name>/oke/web`
 
-> Make images public!
-
 ## Oracle Kubernetes Engine
 
 Create Kubernetes Cluster: `Developer Services > Container Cluster (OKE)`
 
 ![OKE cluster creation](images/okeclustercreation.png)
+
+Follow the steps of `Quick Start` and connect with Kubernetes Dashboard.
 
 ## Pull OCI Registry private images
 
@@ -222,21 +222,28 @@ We need to create a secret on our Kubernetes Cluster to do so:
 
 ## Deploy your containers
 
-**TODO**
+The deployment files contains the specs of the deployment for web and server.
+
+Create both deployments with this commands:
 
 `kubectl apply -f ops/web.yml`
 
-`kubectl describe deployment web-deployment`
+`kubectl apply -f ops/server.yml`
+
+Check Kubernetes Dashboard to see deployments:
 
 `kubectl proxy`
 
 [Kubernetes Dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
 
-`kubectl delete deployment web-deployment`
 
-`kubectl delete service web`
+Clean up after:
 
-## Ingress controller
+`kubectl delete deployment web-deployment server-deployment`
+
+`kubectl delete svc service web`
+
+## Ingress controller
 
 **TODO**
 [Example: Setting Up an Ingress Controller on a Cluster](https://docs.cloud.oracle.com/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm)

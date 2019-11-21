@@ -13,4 +13,4 @@ while true; do
   fi
 done
 
-kubectl create -f server.yaml
+kubectl create -f server.yml
