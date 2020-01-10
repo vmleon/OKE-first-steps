@@ -9,7 +9,7 @@ spec:
     - name: server
       port: 3000
       targetPort: 3000
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: server
 ---
@@ -28,10 +28,10 @@ spec:
         app: server
     spec:
       imagePullSecrets:
-        - name: fra.ocir.io
+        - name: regcred
       containers:
         - name: server
-          image: fra.ocir.io/odca/oke/server:beta
+          image: lhr.ocir.io/odca/oke/server:beta
           resources:
             requests:
               memory: "64Mi"

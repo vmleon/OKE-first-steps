@@ -9,7 +9,7 @@ spec:
     - name: web
       port: 80
       targetPort: 80
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: web
 ---
@@ -28,10 +28,10 @@ spec:
         app: web
     spec:
       imagePullSecrets:
-        - name: fra.ocir.io
+        - name: regcred
       containers:
         - name: web
-          image: fra.ocir.io/odca/oke/web:beta
+          image: lhr.ocir.io/odca/oke/web:beta
           env:
             - name: SERVER_API_URL
               value: "server"
