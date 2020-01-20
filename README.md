@@ -250,6 +250,14 @@ Clean up after:
 
 ## SSL at ingress controller level
 
+Create self-signed certificate
+
+`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=nginxsvc/O=nginxsvc"`
+
+Create secret for TLS
+
+`kubectl create secret tls tls-secret --key tls.key --cert tls.crt`
+
 **TODO**
 
 ## Upgrade your application
