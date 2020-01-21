@@ -28,7 +28,7 @@ spec:
         app: server
     spec:
       imagePullSecrets:
-        - name: regcred
+        - name: ocir-creds
       containers:
         - name: server
           image: lhr.ocir.io/odca/oke/server:beta
