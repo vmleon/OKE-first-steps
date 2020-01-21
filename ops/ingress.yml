@@ -4,18 +4,17 @@ metadata:
   name: oke-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
 spec:
   tls:
     - secretName: tls-secret
   rules:
     - http:
         paths:
-          - path: /api(/|$)(.*)
+          - path: /api
             backend:
               serviceName: server
               servicePort: 3000
-          - path: /ui(/|$)(.*)
+          - path: /
             backend:
               serviceName: web
               servicePort: 80
