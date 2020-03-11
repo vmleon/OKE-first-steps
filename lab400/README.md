@@ -1,11 +1,25 @@
-# Lab 400: Deploy your app
+# Lab 500: Ingress controller
 
-Let's deploy an NGINX web server.
+Follow the steps on the official documentation:
 
-`kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/controllers/nginx-deployment.yaml`
+[Setting Up an Ingress Controller on a Cluster](https://docs.cloud.oracle.com/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm)
+
+## SSL at ingress controller level
+
+Create self-signed certificate
+
+`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=nginxsvc/O=nginxsvc"`
+
+Create secret for TLS
+
+`kubectl create secret tls tls-secret --key tls.key --cert tls.crt`
+
+**Work in prgress**
+
+## Upgrade your application
+
+**Work in progress**
 
 ---
-
-I'm glad you like it so far, the [next lab](../lab500/README.md) is work in progress, don't hesitate to send me Pull Request with improvements!
 
 [Go back Home](../README.md)

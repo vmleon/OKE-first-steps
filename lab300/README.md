@@ -70,6 +70,6 @@ Clean up after:
 
 ---
 
-Next [Lab 400: XXX](../lab400/README.md)
+I'm glad you like it so far, the [next lab](../lab400/README.md) is a work in progress, don't hesitate to collaborate with me with issues and  Pull Request. Thanks.
 
 [Go back Home](../README.md)
