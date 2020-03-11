@@ -142,6 +142,8 @@ When you create a Auth Token in `Identity > Users > <your-user> > Auth Token`, t
 > 
 > \<tenancy-name\>/oracleidentitycloudservice/\<email\>
 
+## Example with Whalesay (docker demo image)
+
 Tag an image for OCI registry:
 
 `docker tag docker/whalesay fra.ocir.io/<tenancy_name>/oke/whalesay:latest`
@@ -150,7 +152,9 @@ Push the tagged image to OCI registry:
 
 `docker push fra.ocir.io/<tenancy_name>/oke/whalesay`
 
-Let's try to tag and push our web and server:
+## Now with out applications
+
+Let's try to tag and push our web and server now.
 
 - `docker tag oke/server fra.ocir.io/<tenancy_name>/oke/server:beta`
 
@@ -161,6 +165,8 @@ Check images with `docker images | grep oke`
 - `docker push fra.ocir.io/<tenancy_name>/oke/server`
 
 - `docker push fra.ocir.io/<tenancy_name>/oke/web`
+
+Ready to go to the next lab!
 
 ---
 

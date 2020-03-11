@@ -1,4 +1,4 @@
-## Ingress controller
+# Lab 500: Ingress controller
 
 Follow the steps on the official documentation:
 

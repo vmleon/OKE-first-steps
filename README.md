@@ -25,7 +25,11 @@ If you don't have one already, what are you waiting for? You can create one on [
 
 Follow the steps and you will receive an email with details to log-in. Sometimes it might take few minutes to fully provision your account.
 
-## Content
+You will need a public and private key.
+
+You will also need Docker installed on your machine. Go to [Docker official](https://docs.docker.com/install/) page.
+
+## Index
 
 - [Lab 100: Set-up](./lab100/README.md)
 - [Lab 200: Containers](./lab200/README.md)
@@ -33,6 +37,6 @@ Follow the steps and you will receive an email with details to log-in. Sometimes
 - [Lab 400: Deploy your application](./lab400/README.md)
 - [Lab 500: Ingress Controller](./lab500/README.md)
 
-## Next
+## Ready to dive in
 
 [Let's get started with Lab 100: Set-up](./lab100/README.md)

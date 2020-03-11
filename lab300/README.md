@@ -1,10 +1,8 @@
-# Lab 300
-
-## Kubernetes
+# Lab 300: Kubernetes
 
 Kubernetes is an **open-source** system for **automating deployment**, **scaling** and **management of containerized applications**. It groups containers that make up an application into logical units for easy management and discovery.
 
-### Kubernetes components (some of them)
+## Kubernetes components (some of them)
 
 - **Pod** is the smallest deployable object in Kubernetes. Containers run inside to do just one job. The pod doesn't make sense without all of those containers running.
 - **Deployment** is a declaration of the topology of your application for Pods and other Kubernetes object models.
@@ -34,6 +32,41 @@ We need to create a secret on our Kubernetes Cluster to do so:
 - `<tenancy-namespace>/<oci-username>`: tenancy and username/email
 - `<oci-auth-token>`: under Identity > User > your user, you can create a Auth Token that goes here
 - `<email-address>`: your email
+
+## Deploy your containers
+
+The deployment files contains the specs of the deployment for web and server.
+
+Download project with:
+
+`wget https://github.com/vmleon/OKE-first-steps/archive/master.zip`
+
+Unzip file:
+
+`unzip master.zip`
+
+Go to the folder:
+
+`cd OKE-first-steps-master/`
+
+Create both deployments with this commands:
+
+`kubectl apply -f ops/web.yml`
+
+`kubectl apply -f ops/server.yml`
+
+Check Kubernetes Dashboard to see deployments:
+
+`kubectl proxy`
+
+[Kubernetes Dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+
+
+Clean up after:
+
+`kubectl delete deployment web-deployment server-deployment`
+
+`kubectl delete svc service web`
 
 ---
 
