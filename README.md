@@ -34,8 +34,7 @@ You will also need Docker installed on your machine. Go to [Docker official](htt
 - [Lab 100: Set-up](./lab100/README.md)
 - [Lab 200: Containers](./lab200/README.md)
 - [Lab 300: Kubernetes](./lab300/README.md)
-- [Lab 400: Deploy your application](./lab400/README.md)
-- [Lab 500: Ingress Controller](./lab500/README.md)
+- [Lab 400: Ingress Controller](./lab400/README.md)
 
 ## Ready to dive in
 
