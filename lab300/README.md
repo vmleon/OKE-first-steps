@@ -13,63 +13,56 @@ Kubernetes is an **open-source** system for **automating deployment**, **scaling
 
 ## Oracle Kubernetes Engine
 
-Create Kubernetes Cluster: `Developer Services > Container Cluster (OKE)`
+We need to add a policy to enable service OKE to manage all resources in the tenancy. This is to enable the service to create node workers and other network resources.
 
-![OKE cluster creation](../images/okeclustercreation.png)
+Go to:
 
-Follow the steps of `Quick Start` and connect with Kubernetes Dashboard.
+![OKE](./images/01.png)
 
-## Pull OCI Registry private images
+![OKE](./images/02.png)
 
-Kubernetes has to pull images from OCI Registry, and for that has to authenticate against the registry.
+![OKE](./images/03.png)
 
-We need to create a secret on our Kubernetes Cluster to do so:
+This is the statement to paste:
 
-`kubectl create secret docker-registry <secret-name> --docker-server=<region-code>.ocir.io --docker-username='<tenancy-namespace>/<oci-username>' --docker-password='<oci-auth-token>' --docker-email='<email-address>'`
+`allow service OKE to manage all-resources in tenancy`
 
-- `<secret-name>`: any descriptive name you like
-- `<region-code>.ocir.io`: OCI registry service URL, e.g. lon.ocir.io
-- `<tenancy-namespace>/<oci-username>`: tenancy and username/email
-- `<oci-auth-token>`: under Identity > User > your user, you can create a Auth Token that goes here
-- `<email-address>`: your email
+Now, it is time to create our Kubernetes Cluster:
 
-## Deploy your containers
+![OKE](./images/04.png)
 
-The deployment files contains the specs of the deployment for web and server.
+![OKE](./images/05.png)
 
-Download project with:
+![OKE cluster creation](./images/06.png)
 
-`wget https://github.com/vmleon/OKE-first-steps/archive/master.zip`
+Select a name, the compartment (root compartment is fine for the hands-on lab)
 
-Unzip file:
+![OKE cluster creation](./images/07.png)
 
-`unzip master.zip`
+Review the creation and confirm.
 
-Go to the folder:
+## Install kubectl on your linux machine
 
-`cd OKE-first-steps-master/`
+Go to [Kubernetes intall Kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux) but to install the stable version you just type this:
 
-Create both deployments with this commands:
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+```
 
-`kubectl apply -f ops/web.yml`
+Then make kubectl executable and move it to the final folder:
 
-`kubectl apply -f ops/server.yml`
+`chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl`
 
-Check Kubernetes Dashboard to see deployments:
+Check everything went well:
 
-`kubectl proxy`
+`kubectl version --client`
 
-[Kubernetes Dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+Scroll down on the Kubernetes cluster detail page and follow the steps of `Quick Start` and connect with Kubernetes Dashboard.
 
-
-Clean up after:
-
-`kubectl delete deployment web-deployment server-deployment`
-
-`kubectl delete svc service web`
+![Quick Start](./images/08.png)
 
 ---
 
-I'm glad you like it so far, the [next lab](../lab400/README.md) is a work in progress, don't hesitate to collaborate with me with issues and  Pull Request. Thanks.
+I'm glad you like it so far, the [next lab](../lab400/README.md) is a work in progress, don't hesitate to collaborate with issues and  Pull Request. Thanks.
 
 [Go back Home](../README.md)

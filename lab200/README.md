@@ -63,11 +63,29 @@ You define the container image  with a **Dockerfile**. Dockerfile contains the i
 
 ## Build your container images
 
-Build your image for the web:
+We are going to use files in this Github project from our linux machine in the cloud, so let's grab the zip and decompress it.
+
+Download project with:
+
+`wget https://github.com/vmleon/OKE-first-steps/archive/master.zip`
+
+Unzip file:
+
+`unzip master.zip`
+
+Go to the folder:
+
+`cd OKE-first-steps-master/`
+
+There are to applications we are going to play with, all the time. Web and server. They are on the `src` folder of this project. Let's build the docker images now:
 
 `cd src/web`
 
 `docker build -t oke/web .`
+
+You get an error: `Got permission denied while trying to connect to the Docker daemon socket`. It is complaining about Docker socket permisions. For the hands-on lab we can just execute all the docker commands with `sudo` like this, although I omit that on the commands:
+
+`sudo docker build -t oke/web .`
 
 Build your image for the server:
 
@@ -91,13 +109,13 @@ Run locally a container from your images:
 
 ## Test the applications
 
-Server health 
+Server health:
 
 `curl -s localhost:3000/health | jq .`
 
-Web running on:
-[localhost](http://localhost)
+Web running:
 
+`wget -O - localhost`
 
 ## Pull and push images
 
@@ -110,14 +128,12 @@ Developers or CI tools can **push** images to the repository.
 Kubernetes and developers can **pull** images to be run.
 
 > Try it yourself!
-> 
+>  
 > Pull an image:
 > `docker pull docker/whalesay`
-> 
 > Run the image:
-> 
+>  
 > `docker run --name whale --rm docker/whalesay cowsay "Say no to one-use plastic, hooman"`
-
 
 Login with your Docker into OCI registry:
 
@@ -154,7 +170,7 @@ Push the tagged image to OCI registry:
 
 ## Now with out applications
 
-Let's try to tag and push our web and server now.
+Let's tag and push our web and server now.
 
 - `docker tag oke/server fra.ocir.io/<tenancy_name>/oke/server:beta`
 

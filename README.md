@@ -1,8 +1,8 @@
 # Oracle Kubernetes Engine First Steps
 
-First steps with Docker, Kubernetes and Oracle Kubernetes Engine (OKE).
+First steps with Oracle Kubernetes Engine (OKE), a fully-managed kubernetes cluster.
 
-We are going to build, dockerize and deploy an application.
+We are going to build, dockerize and deploy on Kubernetes to show you how to modernize your application and be able to stay on top of your competitors.
 
 ![Architecture](images/use-case.png)
 
@@ -11,7 +11,6 @@ We are going to build, dockerize and deploy an application.
 - Understand concepts like virtual machines, containers, Docker, container registry, and Kubernetes.
 - Create a Kubernetes cluster with Oracle Cloud.
 - Dockerize your application.
-- Run your application locally with Docker.
 - Configure `kubectl` to talk to your cluster.
 - Deploy your application in Oracle Kubernetes Engine (OKE).
 - Scale up and down your application
@@ -25,9 +24,11 @@ If you don't have one already, what are you waiting for? You can create one on [
 
 Follow the steps and you will receive an email with details to log-in. Sometimes it might take few minutes to fully provision your account.
 
-You will need a public and private key.
+You will need a SSH public and private key.
 
-You will also need Docker installed on your machine. Go to [Docker official](https://docs.docker.com/install/) page.
+> If you don't have SSH private and public key. Follow the steps on this [guide](https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm).
+
+(Optional) If you want to test the Docker part locally, you will need Docker installed on your machine. Go to [Docker official](https://docs.docker.com/install/) page.
 
 ## Index
 
